@@ -14,29 +14,42 @@
 
 <body>
   <div class="container">
-    <div id="result"></div>
-
-
+    
+    
     <div id="game">
-      <div id="players">
-        <div id="enemy"></div>
-        <div id="me"></div>
+      
+      <div id="enemy" class="hidden">
+        <h2>Enemy</h2>
+        <div class="cards">
+        </div>
+        <h3 class="sum"></h3>
       </div>
-
+      
       <div id="master">
         <div id="text">
           <h2>21 -Baker's Blackjack-</h2>
         </div>
         <button id="start">Start</button>
         <div class="buttons">
-          <button id="draw" class="disabled hidden">引く</button>
-          <button id="notdraw" class="disabled hidden">引かない</button>
+          <button id="draw" class="hidden">引く</button>
+          <button id="notdraw" class="hidden">引かない</button>
         </div>
       </div>
+      
+      <div id="me" class="hidden">
+        <div class="cards">
+        </div>
+        <h3 class="sum"></h3>
+        <h2>Player</h2>
+      </div>
+      
     </div>
+
+    <!-- <div id="result"></div> -->
+
   </div>
-
-
+  
+  
   <script src="js/main.js"></script>
 </body>
 

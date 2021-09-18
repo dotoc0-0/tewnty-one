@@ -2,7 +2,6 @@
 {
 
   const allCards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  // const allCards = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
 
   // HTML領域
   const result = document.getElementById('result');
@@ -13,6 +12,11 @@
   const start = document.getElementById('start');
   const drawbtn = document.getElementById('draw');
   const notdrawbtn = document.getElementById('notdraw');
+  const myCards = document.querySelector('#me > .cards');
+  const enemysCards = document.querySelector('#enemy > .cards');
+  const showMySum = document.querySelector('#me > .sum');
+  const showEnemysSum = document.querySelector('#enemy > .sum');
+
 
 
   function addValue(parent, value) {
@@ -21,7 +25,7 @@
     parent.appendChild(p);
   }
 
-  addValue(result, 'カード：' + allCards);
+  // addValue(result, 'カード：' + allCards);
 
 
   //ランダム数字リスト
@@ -41,20 +45,22 @@
 
   let yamafuda = shuffle([...allCards]);
 
-  let myCards = [yamafuda[0], yamafuda[1]];
-  let enemysCards = [yamafuda[2], yamafuda[3]];
+  let myTefuda = [yamafuda[0], yamafuda[1]];
+  let enemysTefuda = [yamafuda[2], yamafuda[3]];
   let mySum = yamafuda[0] + yamafuda[1];
   let enemysSum = yamafuda[2] + yamafuda[3];
 
-
   start.addEventListener('click', () => {
     if (started) {
-      start.classList.add('disabled', 'hidden');
+      start.classList.add('hidden');
       drawbtn.classList.remove('disabled', 'hidden');
-      notdrawbtn.classList.remove('disabled', 'hidden');
+      notdrawbtn.classList.remove('hidden');
       addText('あなたのターンです。');
       return;
     };
+
+    enemy.classList.remove('hidden');
+    me.classList.remove('hidden');
 
     start.textContent = 'OK';
     started = true;
@@ -62,11 +68,20 @@
     while (yamafuda.length > 7) {
       yamafuda.shift();
     }
-    addValue(result, '〇山札：' + yamafuda);
-    addValue(enemy, '相手初期カード：' + enemysCards);
-    addValue(enemy, '相手初期計：' + enemysSum);
-    addValue(me, '自分初期カード：' + myCards);
-    addValue(me, '自分初期計：' + mySum);
+    // addValue(result, '〇山札：' + yamafuda);
+
+    showEnemysSum.innerHTML = '? / 21';
+    showMySum.innerHTML = mySum + '/ 21';
+
+    myTefuda.forEach(card => {
+      addValue(myCards, card);
+    });
+    enemysTefuda.forEach(card => {
+      addValue(enemysCards, card);
+    });
+
+    const enemysFirstCard = document.querySelector('#enemy>.cards>p:first-of-type');
+    enemysFirstCard.innerHTML = '?';
 
     addText('最初の手札が配られました！');
 
@@ -79,15 +94,15 @@
   }
 
   let standContinues = 0;
-  function showContinues() {
-    if (document.getElementById('continue')) {
-      document.getElementById('continue').remove();
-    }
-    const c = document.createElement('p');
-    c.textContent = '連続スタンド：' + standContinues;
-    c.id = 'continue';
-    result.appendChild(c);
-  }
+  // function showContinues() {
+  //   if (document.getElementById('continue')) {
+  //     document.getElementById('continue').remove();
+  //   }
+  //   const c = document.createElement('p');
+  //   c.textContent = '連続スタンド：' + standContinues;
+  //   c.id = 'continue';
+  //   result.appendChild(c);
+  // }
 
 
   drawbtn.addEventListener('click', () => {
@@ -98,23 +113,19 @@
     }
 
     standContinues = 0;
-    showContinues();
 
-    myCards.push(yamafuda[0]);
-    addValue(me, '引いたカード：' + yamafuda[0]);
+    addValue(myCards, yamafuda[0]);
+    myTefuda.push(yamafuda[0]);
     yamafuda.shift();
-    addValue(result, '〇山札：' + yamafuda);
 
-    addValue(me, '今の手札：' + myCards);
-    mySum = total(myCards);
-    addValue(me, '今の合計：' + mySum);
+    mySum = total(myTefuda);
+    showMySum.innerHTML = mySum + '/ 21';
 
     enemysTurn();
   });
 
   notdrawbtn.addEventListener('click', () => {
     standContinues++;
-    showContinues();
     if (standContinues === 2) {
       endGame();
       return;
@@ -123,31 +134,46 @@
     enemysTurn();
   });
 
+  let randomNumber;
 
   function enemysTurn() {
-    drawbtn.classList.add('disabled', 'hidden');
-    notdrawbtn.classList.add('disabled', 'hidden');
+    drawbtn.classList.add('hidden');
+    notdrawbtn.classList.add('hidden');
 
-    if (enemysSum <= 15) {
-      EnemyDraws();
-    } else {
-      EnemyNotDraws();
-    }
+    addText('<p>相手のターン！<br>相手はどうするのかな？？</p><button id="enemysbtn">Next</button>');
+
+    document.getElementById('enemysbtn').addEventListener('click', () => {
+      randomNumber = Math.ceil(Math.random() * 10);
+      if (enemysSum <= 13) {
+        EnemyDraws();
+      } else if (enemysSum <= 15) {
+        if (randomNumber <= 5) {
+          EnemyDraws();
+        } else {
+          EnemyNotDraws();
+        }
+      } else if (enemysSum <= 18) {
+        if (randomNumber <= 2) {
+          EnemyDraws();
+        } else {
+          EnemyNotDraws();
+        }
+      } else {
+        EnemyNotDraws();
+      }
+    });
 
   }
 
+
   function EnemyDraws() {
     standContinues = 0;
-    showContinues();
 
-    enemysCards.push(yamafuda[0]);
-    addValue(enemy, '引いたカード：' + yamafuda[0]);
+    addValue(enemysCards, yamafuda[0]);
+    enemysTefuda.push(yamafuda[0]);
     yamafuda.shift();
-    addValue(result, '〇山札：' + yamafuda);
 
-    addValue(enemy, '今の手札：' + enemysCards);
-    enemysSum = total(enemysCards);
-    addValue(enemy, '今の合計：' + enemysSum);
+    enemysSum = total(enemysTefuda);
 
     addText('<p>相手はカードを引いた！</p><button id="toyourturn">ok</button>')
 
@@ -156,13 +182,12 @@
     toyourturn.addEventListener('click', () => {
       addText('あなたのターンです。');
       drawbtn.classList.remove('disabled', 'hidden');
-      notdrawbtn.classList.remove('disabled', 'hidden');
+      notdrawbtn.classList.remove('hidden');
     });
   }
 
   function EnemyNotDraws() {
     standContinues++;
-    showContinues();
 
     addText('<p>相手はカードを引かなかった！</p><button id="toyourturn">ok</button>')
 
@@ -178,37 +203,41 @@
 
       addText('あなたのターンです。');
       drawbtn.classList.remove('disabled', 'hidden');
-      notdrawbtn.classList.remove('disabled', 'hidden');
+      notdrawbtn.classList.remove('hidden');
     });
   }
 
 
   function endGame() {
-    drawbtn.classList.add('disabled', 'hidden');
-    notdrawbtn.classList.add('disabled', 'hidden');
+    drawbtn.classList.add('hidden');
+    notdrawbtn.classList.add('hidden');
+
+    const enemysFirstCard = document.querySelector('#enemy>.cards>p:first-of-type');
+    enemysFirstCard.textContent = enemysTefuda[0];
+    showEnemysSum.innerHTML = enemysSum + '/ 21';
 
     const youWin = '<h2>ゲーム終了</h2><p>あなたの勝ちです！！やったね！</p>';
     const youLose = '<h2>ゲーム終了</h2><p>あなたの負けです！！残念・・・</p>';
     const tie = '<h2>ゲーム終了</h2><p>今回の勝負は引き分け！</p>'
 
     if (mySum > 21) {
-      if(enemysSum > 21){
+      if (enemysSum > 21) {
         addText(tie);
         addValue(master, '<a href="">Replay</a>');
         return;
       }
       addText(youLose);
-    }else{
-      if(enemysSum > 21){
+    } else {
+      if (enemysSum > 21) {
         addText(youWin);
         addValue(master, '<a href="">Replay</a>');
         return;
       }
-      if(mySum > enemysSum){
+      if (mySum > enemysSum) {
         addText(youWin);
-      }else if(mySum === enemysSum){
+      } else if (mySum === enemysSum) {
         addText(tie);
-      }else{
+      } else {
         addText(youLose);
       }
     }

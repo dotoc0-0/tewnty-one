@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 html {
   font-size: 100%;
 }
@@ -31,70 +30,103 @@ ul {
   list-style: none;
 }
 
-.container{
+.container {
   background: #fff;
   max-width: 600px;
-  margin: 60px auto;
-  padding: 60px 20px 80px;
+  margin: 40px auto;
+  padding: 40px 20px 60px;
 }
 
-#result{
+#result {
   background: #eee;
   padding: 10px;
-  margin-bottom: 20px;
-}
-
-h2{
   margin-top: 20px;
 }
 
-button,a{
+h2 {
+  padding: 20px 0;
+}
+
+button, a {
   background: darkgray;
   color: #fff;
   padding: 8px;
   width: 100px;
   display: block;
-  margin: 20px auto;
+  margin: 20px auto 10px;
 }
 
-button.disabled{
+button.disabled {
   opacity: 0.6;
   pointer-events: none;
 }
 
-#game{
+#game {
   background: cornsilk;
-  padding: 20px 10px;
-}
-
-#players{
+  padding: 40px 10px;
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-#enemy{
-  width: 50%;
-}
-#me{
-  width: 50%;
-}
-
-#master{
-  background: #fff;
-  padding: 20px 10px;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-#master .buttons{
+
+
+#enemy {
+  width: 48%;
+}
+
+#me {
+  width: 48%;
+}
+
+#master {
+  background: #fff;
+  width: 80%;
+  padding: 30px 10px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#master .buttons {
   display: flex;
 }
 
-#text>p{
+#text>p {
   margin-top: 20px;
 }
 
-
-.hidden{
+.hidden {
   display: none;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cards p {
+  background: #fff;
+  font-size: 1.4rem;
+  width: 40px;
+  height: 50px;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  border: 2px solid #888;
+  color: green;
+  user-select: none;
+}
+
+
+.cards p:first-of-type {
+  color: rebeccapurple;
+}
+
+.cards p:last-of-type {
+  margin-right: 0;
 }
