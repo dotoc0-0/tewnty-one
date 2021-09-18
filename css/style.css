@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background: cadetblue;
+  color: #333;
+  font-size: 1rem;
+  /*
+  1rem:
+   h1 → font-size:24px line-height:28px
+   h2 → font-size:24px line-height:28px
+   h3 → font-size:14px line-height:22px
+   p → font-size:18px line-height:24px
+  */
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+.container{
+  background: #fff;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 60px 20px 80px;
+}
+
+#result{
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+h2{
+  margin-top: 20px;
+}
+
+button,a{
+  background: darkgray;
+  color: #fff;
+  padding: 8px;
+  width: 100px;
+  display: block;
+  margin: 20px auto;
+}
+
+button.disabled{
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+#game{
+  background: cornsilk;
+  padding: 20px 10px;
+}
+
+#players{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#enemy{
+  width: 50%;
+}
+#me{
+  width: 50%;
+}
+
+#master{
+  background: #fff;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+#master .buttons{
+  display: flex;
+}
+
+#text>p{
+  margin-top: 20px;
+}
+
+
+.hidden{
+  display: none;
+}
