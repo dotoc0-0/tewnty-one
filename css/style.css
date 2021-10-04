@@ -4,8 +4,9 @@ html {
 }
 
 body {
-  background: cadetblue;
+  background: #aaa;
   color: #333;
+  font-family: Verdana, sans-serif;
   font-size: 1rem;
   /*
   1rem:
@@ -30,25 +31,9 @@ ul {
   list-style: none;
 }
 
-.container {
-  background: #fff;
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 40px 20px 60px;
-}
-
-#result {
-  background: #eee;
-  padding: 10px;
-  margin-top: 20px;
-}
-
-h2 {
-  padding: 20px 0;
-}
 
 button, a {
-  background: darkgray;
+  background: olivedrab;
   color: #fff;
   padding: 8px;
   width: 100px;
@@ -62,22 +47,14 @@ button.disabled {
 }
 
 #game {
-  background: cornsilk;
-  padding: 40px 10px;
+  background: olivedrab;
+  max-width: 600px;
+  margin: 30px auto 20px;
+  padding: 30px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-
-
-#enemy {
-  width: 48%;
-}
-
-#me {
-  width: 48%;
 }
 
 #master {
@@ -86,6 +63,11 @@ button.disabled {
   padding: 30px 10px;
   text-align: center;
   margin: 20px 0;
+  position: relative;
+}
+
+#master.title{
+  padding: 100px 10px;
 }
 
 #master .buttons {
@@ -93,40 +75,191 @@ button.disabled {
 }
 
 #text>p {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .hidden {
-  display: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  transition-duration: opacity 0.3s;
+  pointer-events: none;
+  opacity: 0 !important;
 }
 
 .cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .cards p {
   background: #fff;
   font-size: 1.4rem;
   width: 40px;
-  height: 50px;
+  height: 48px;
   font-weight: bold;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-right: 8px;
-  border: 2px solid #888;
+  margin: 0 4px 10px;
+  border: 2px solid #333;
   color: green;
+  user-select: none;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cards p:first-of-type {
+  color: #333;
+}
+
+.cords p:last-of-type {
+  margin-right: 0;
+}
+
+.person {
+  display: block;
+  background: #fff;
+  color: green;
+  padding: 10px;
+  margin: 20px auto;
+  width: 140px;
+  border-radius: 70px / 24px;
+}
+
+.sum {
+  color: #fff;
+}
+
+#showrule {
+  position: absolute;
+  top: -4px;
+  right: 20px;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 4px;
+  width: 60px;
+  line-height: 1rem;
+  border-radius: 24px;
+}
+
+#rule {
+  position: fixed;
+  width: 90%;
+  max-width: 560px;
+  background: #333;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0 10px 16px;
+  transition: opacity 0.3s;
+}
+
+#rule h2 {
+  color: #fff;
+  padding: 10px 0;
+}
+
+#rule .content {
+  background: #fff;
+  padding: 20px 10px 40px;
+  text-align: left;
+}
+
+#rule .content p {
+  font-size: 0.9rem;
+}
+
+#rule .pagenation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #fff;
   user-select: none;
 }
 
-
-.cards p:first-of-type {
-  color: rebeccapurple;
+#rule #rulePage {
+  padding: 0 30px;
 }
 
-.cards p:last-of-type {
-  margin-right: 0;
+#rulePrev, #ruleNext {
+  cursor: pointer;
+}
+
+#rulePrev.disabled, #ruleNext.disabled {
+  color: #888;
+  cursor: unset;
+  user-select: none;
+}
+
+#rule #rule-close {
+  width: 20px;
+  height: 22px;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  cursor: pointer;
+}
+
+#rule-close::before, #rule-close::after {
+  position: absolute;
+  left: 0;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: #fff;
+}
+
+#rule-close::before {
+  transform: translateY(10px)rotate(45deg);
+}
+
+#rule-close::after {
+  transform: translateY(10px)rotate(-45deg);
+}
+
+footer{
+  color: #555;
+  font-size: 0.75rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width:450px) {
+  #game{
+    margin-top: 20px;
+    padding: 20px 10px;
+  }
+  #master{
+    width: 90%;
+  }
+  button,a{
+    margin-bottom: 20px;
+  }
+  #showrule {
+    top: unset;
+    bottom: -10px;
+    right: 10px;
+    font-size: 0.6rem;
+    padding: 4px;
+    width: 50px;
+  }
+
+  #text p{
+    font-size: 1.1rem;
+  }
+
+
 }
