@@ -31,14 +31,15 @@ ul {
   list-style: none;
 }
 
-
 button, a {
   background: olivedrab;
   color: #fff;
-  padding: 8px;
+  font-size: 1rem;
+  padding: 6px;
   width: 100px;
   display: block;
-  margin: 20px auto 10px;
+  border: 1px solid #fff;
+  margin: 20px auto 0;
 }
 
 button.disabled {
@@ -60,18 +61,20 @@ button.disabled {
 #master {
   background: #fff;
   width: 80%;
-  padding: 30px 10px;
+  padding: 20px 10px 30px;
   text-align: center;
   margin: 20px 0;
   position: relative;
 }
 
-#master.title{
+#master.title {
   padding: 100px 10px;
 }
 
 #master .buttons {
+  width: 80%;
   display: flex;
+  margin: 0 auto;
 }
 
 #text>p {
@@ -134,7 +137,7 @@ button.disabled {
   padding: 10px;
   margin: 20px auto;
   width: 140px;
-  border-radius: 70px / 24px;
+  border-radius: 50%;
 }
 
 .sum {
@@ -143,15 +146,17 @@ button.disabled {
 
 #showrule {
   position: absolute;
-  top: -4px;
-  right: 20px;
+  top: -54px;
+  right: 8px;
   color: #fff;
   font-size: 0.7rem;
   padding: 4px;
   width: 60px;
   line-height: 1rem;
+  border: 1.4px solid #fff;
   border-radius: 24px;
 }
+
 
 #rule {
   position: fixed;
@@ -162,7 +167,7 @@ button.disabled {
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding: 0 10px 16px;
+  padding: 0 10px 40px;
   transition: opacity 0.3s;
 }
 
@@ -230,36 +235,54 @@ button.disabled {
   transform: translateY(10px)rotate(-45deg);
 }
 
-footer{
+footer {
   color: #555;
   font-size: 0.75rem;
   text-align: center;
   margin-bottom: 20px;
 }
 
-@media screen and (max-width:450px) {
-  #game{
+@media screen and (max-width:500px) {
+  #game {
     margin-top: 20px;
     padding: 20px 10px;
   }
-  #master{
+  #master {
     width: 90%;
   }
-  button,a{
+  #enemy, #me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10%;
+  }
+  #me {
+    flex-direction: row-reverse;
+  }
+  .person {
+    font-size: 1.0rem;
+    margin-right: 6%;
+  }
+  .sp-wrapper {
+    width: 80%;
+  }
+  button, a {
     margin-bottom: 20px;
   }
   #showrule {
     top: unset;
-    bottom: -10px;
     right: 10px;
+    bottom: -10px;
     font-size: 0.6rem;
     padding: 4px;
     width: 50px;
   }
-
-  #text p{
+  #rule {
+    top: 10px;
+    max-height: 80%;
+  }
+  #text p {
     font-size: 1.1rem;
   }
-
-
 }

@@ -4,11 +4,11 @@
   const master = document.getElementById('master');
   const text = document.getElementById('text');
   const enemy = document.getElementById('enemy');
-  const enemysCards = document.querySelector('#enemy > .cards');
-  const showEnemysSum = document.querySelector('#enemy > .sum');
+  const enemysCards = document.querySelector('#enemy .cards');
+  const showEnemysSum = document.querySelector('#enemy .sum');
   const me = document.getElementById('me');
-  const myCards = document.querySelector('#me > .cards');
-  const showMySum = document.querySelector('#me > .sum');
+  const myCards = document.querySelector('#me .cards');
+  const showMySum = document.querySelector('#me .sum');
   const start = document.getElementById('start');
   const drawbtn = document.getElementById('draw');
   const notdrawbtn = document.getElementById('notdraw');
@@ -150,7 +150,7 @@
       addValue(enemysCards, card);
     });
 
-    const enemysFirstCard = document.querySelector('#enemy>.cards p:first-of-type');
+    const enemysFirstCard = document.querySelector('#enemy .cards p:first-of-type');
     enemysFirstCard.innerHTML = '?';
 
     addText('<p>最初の手札が配られました！</p>');
@@ -188,7 +188,6 @@
       endGame();
       return;
     }
-
     enemysTurn();
   });
 
@@ -223,7 +222,7 @@
   }
 
   function actionToYourTurn() {
-    addText('あなたのターンです。');
+    addText('<p>あなたのターンです！</p>');
     drawbtn.classList.remove('disabled', 'hidden');
     notdrawbtn.classList.remove('hidden');
   }
@@ -237,18 +236,18 @@
 
     enemysSum = total(enemysTefuda);
 
-    addText('<p>相手はカードを引いた！</p><button id="btn">ok</button>')
+    addText('<p>相手はカードを引いた！</p><button id="btn">OK</button>')
 
     document.getElementById('btn').addEventListener('click', () => {
       actionToYourTurn();
     });
   }
-  
+
   function EnemyNotDraws() {
     standContinues++;
-    
-    addText('<p>相手はカードを引かなかった！</p><button id="btn">ok</button>')
-    
+
+    addText('<p>相手はカードを引かなかった！</p><button id="btn">OK</button>')
+
     document.getElementById('btn').addEventListener('click', () => {
       if (standContinues === 2) {
         endGame();
@@ -267,7 +266,7 @@
 
     btn.addEventListener('click', () => {
 
-      const enemysFirstCard = document.querySelector('#enemy>.cards>p:first-of-type');
+      const enemysFirstCard = document.querySelector('#enemy .cards>p:first-of-type');
       enemysFirstCard.innerHTML = enemysTefuda[0];
 
       showEnemysSum.innerHTML = enemysSum + ' / 21';
@@ -276,7 +275,7 @@
       const youLose = '<h2>ゲーム終了</h2><p>あなたの負けです！！残念・・・</p>';
       const tie = '<h2>ゲーム終了</h2><p>今回の勝負は引き分け！</p>';
       const blackJack = youWin + '<h5>ブラックジャックで勝利！すごい！</h5>';
-      function addReplayBtn(){
+      function addReplayBtn() {
         addValue(master, '<a href="">Replay</a>');
       }
 
