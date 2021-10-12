@@ -50,6 +50,10 @@ button.disabled {
 }
 
 #game {
+  max-width: 100%;
+}
+
+#game {
   background: olivedrab;
   max-width: 600px;
   margin: 30px auto 20px;
