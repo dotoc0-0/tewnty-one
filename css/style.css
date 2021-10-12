@@ -245,7 +245,7 @@ footer {
 @media screen and (max-width:500px) {
   #game {
     width: 100%;
-    margin: 20px auto;
+    margin: 20px 0;
     padding: 20px 10px;
   }
   #master {
