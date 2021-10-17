@@ -90,6 +90,10 @@ button.disabled {
   margin-bottom: 30px;
 }
 
+#master h5{
+  margin-bottom: 10px;
+}
+
 #showrule{
   position: absolute;
   bottom: 8px;
@@ -302,7 +306,6 @@ footer{
 
   #rule {
     top: 20px;
-    max-height: 80%;
   }
 
 }
