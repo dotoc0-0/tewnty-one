@@ -7,92 +7,89 @@
   <!-- <link rel="shortcut icon" href="favicon.ico"> -->
   <title>Twenty One</title>
 
-  <link rel="stylesheet" href="https:/unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="css/ress.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 
 <body>
- <div class="container">
-  <div id="game">
+  <div class="container">
+    <div id="game">
 
-    <div id="enemy" class="hidden">
-      <h2 class="person">Enemy</h2>
-      <div class="sp-wrapper">
+      <div id="enemy" class="hidden">
+        <div class="person-wrapper">
+          <h2 class="person">Enemy</h2>
+          <h3 class="sum"></h3>
+        </div>
         <div class="cards">
         </div>
-        <h3 class="sum"></h3>
-      </div>
-    </div>
-
-    <div id="master" class="title">
-      <div id="text">
-        <h2>21<br>-Baker's Blackjack-</h2>
       </div>
 
-      <button id="start">Start</button>
-      <div class="buttons">
-        <button id="draw" class="hidden">引く</button>
-        <button id="notdraw" class="hidden">引かない</button>
-      </div>
-
-      <button id="showrule">ルール</button>
-      <div id="rule" class="hidden">
-        <h2>ルール</h2>
-        <div id="rule-close"></div>
-
-        <div class="pagenation">
-          <p id="rulePrev" class="disabled">← Prev</p>
-          <p id="rulePage"></p>
-          <p id="ruleNext">Next →</p>
+      <div id="master" class="title">
+        <div id="text">
+          <h2>21<br>-Twenty One-</h2>
         </div>
 
-        <div class="content">
-          <p id="rule1">
-            ゲームを開始すると、<b>自分(Player)</b>と<b>相手(Enemy)</b>に2枚ずつ<b>手札</b>が配られます。<br>
-            (最初に配られた手札のうち、相手の手札の片方は伏せられていて見ることができません。)<br>
-            <br>
-            自分のターンでは、山札からカードを引くかどうかを選択することができます。<br>
-            このゲームで使用するのは、1～11の数字が書かれた<b>合計11枚</b>のカードです。<br>
-          </p>
-          <p id="rule2" class="hidden">
-            自分の持ち札や相手の見えている手札から山札の残りのカードの数字を推察しつつ、<b>自分の手札の合計を21に近づける</b>ことを目指しましょう。<br>
-            <br>
-            ただし、自分の手札の合計が<b>21を超えてしまうと勝利することはできません。</b>
-            <br>
-          </p>
-          <p id="rule3" class="hidden">
-            手札の合計が21以下の場合、<b>相手よりも手札の合計が多ければあなたの勝利</b>です。<br>(<b>相手の手札の合計のみが21を超えていた場合</b>も、あなたの勝利です。)
-            <br>
-            <br>
-            自分の手札の合計が21を超えてしまった場合や相手の手札の合計の方が21に近かった場合は敗北、相手と手札の合計が同じだった場合や両方とも21を超えてしまっていた場合は引き分けとなります。
-          </p>
+        <button id="start">Start</button>
+        <div class="buttons">
+          <button id="draw" class="hidden">引く</button>
+          <button id="notdraw" class="hidden">引かない</button>
+        </div>
+
+        <button id="showrule">ルール</button>
+        <div id="rule" class="hidden">
+          <h2>ルール</h2>
+          <div id="rule-close"></div>
+
+          <div class="pagenation">
+            <p id="rulePrev" class="disabled">← Prev</p>
+            <p id="rulePage"></p>
+            <p id="ruleNext">Next →</p>
+          </div>
+
+          <div class="content">
+            <p id="rule1">
+              ゲームを開始すると、<b>自分(Player)</b>と<b>相手(Enemy)</b>に2枚ずつ<b>手札</b>が配られます。<br>
+              (最初に配られた手札のうち、相手の手札の片方は伏せられていて見ることができません。)<br>
+              <br>
+              自分のターンでは、山札からカードを引くかどうかを選択することができます。<br>
+              このゲームで使用するのは、1～11の数字が書かれた<b>合計11枚</b>のカードです。<br>
+            </p>
+            <p id="rule2" class="hidden">
+              自分の持ち札や相手の見えている手札から山札の残りのカードの数字を推察しつつ、<b>自分の手札の合計を21に近づける</b>ことを目指しましょう。<br>
+              <br>
+              ただし、自分の手札の合計が<b>21を超えてしまうと勝利することはできません。</b>
+              <br>
+            </p>
+            <p id="rule3" class="hidden">
+              手札の合計が21以下の場合、<b>相手よりも手札の合計が多ければあなたの勝利</b>です。<br>(<b>相手の手札の合計のみが21を超えていた場合</b>も、あなたの勝利です。)
+              <br>
+              <br>
+              自分の手札の合計が21を超えてしまった場合や相手の手札の合計の方が21に近かった場合は敗北、相手と手札の合計が同じだった場合や両方とも21を超えてしまっていた場合は引き分けとなります。
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="me" class="hidden">
-      <div class="sp-wrapper">
+      <div id="me" class="hidden">
         <div class="cards">
         </div>
-        <h3 class="sum"></h3>
+        <div class="person-wrapper">
+          <h2 class="person">Player</h2>
+          <h3 class="sum"></h3>
+        </div>
       </div>
-      <h2 class="person">Player</h2>
+
     </div>
+
   </div>
+
   <footer>
     <p>&copy;dotoc0_0</p>
   </footer>
 
- </div>
-
-
-
   <script src="js/main.js"></script>
 </body>
 
-<footer>
-  <p>&copy;dotoc0_0</p>
-</footer>
 
 </html>
