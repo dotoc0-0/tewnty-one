@@ -268,7 +268,7 @@ footer a{
 }
 
 @media screen and (max-width:500px) {
-  button,a{
+  button,a.replay{
     font-size: 0.9rem;
     padding: 6px;
     width: 80px;
