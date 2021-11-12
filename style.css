@@ -31,21 +31,14 @@ ul {
   list-style: none;
 }
 
-button {
+button, a.replay{
   display: block;
   background: olivedrab;
   color: #fff;
   font-size: 1rem;
   width: 100px;
-  line-height: 36px;
+  padding: 8px 0;
   margin: 0 auto;
-}
-
-@media screen and (max-width:500px) {
-  button {
-    font-size: 0.9rem;
-    width: 80px;
-  }
 }
 
 button.disabled {
@@ -53,70 +46,43 @@ button.disabled {
   pointer-events: none;
 }
 
-#actions {
+.buttons{
   display: flex;
   justify-content: space-between;
   width: 60%;
   margin: 0 auto;
 }
 
-@media screen and (max-width:500px) {
-  #actions{
-    width: 80%;
-  }
-}
-
-.container {
+.container{
   background: olivedrab;
-  padding: 40px 20px 60px;
+  padding: 30px 20px;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto 40px;
-  position: relative;
+  margin: 0 auto;
 }
 
-@media screen and (max-width:500px) {
-  .container {
-    padding: 40px 0 50px;
-  }
-}
-
-#game {
+#game{
   background: beige;
   width: 100%;
   height: 100%;
   padding: 20px;
 }
 
-#master {
+
+#master{
   background: #fff;
   width: 90%;
   text-align: center;
-  padding: 30px 10px 50px;
+  padding: 20px 10px;
   margin: 40px auto;
   position: relative;
 }
 
-@media screen and (max-width:500px) {
-  #master {
-    width: 96%;
-    margin: 20px auto;
-  }
-}
-
-#master p {
+#master p{
   margin-bottom: 20px;
 }
 
-#bet {
-  display: block;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: -30px;
-  left: 8px;
-}
-
-#master.title {
+#master.title{
   padding: 60px 40px;
 }
 
@@ -124,47 +90,20 @@ h2#title {
   margin-bottom: 20px;
 }
 
-#master h5 {
+#master h5{
   margin-bottom: 10px;
-  font-weight: normal;
-  font-size: 0.9rem;
 }
 
-#caption {
-  display: none;
-}
-
-#master.title #caption {
-  display: block;
-}
-
-@media screen and (max-width:500px) {
-  #master h5 {
-    font-size: 0.8rem;
-  }
-}
-
-#showrule {
+#showrule{
   position: absolute;
   bottom: 8px;
   right: 8px;
   font-size: 0.75rem;
   width: 60px;
-  line-height: 24px;
   border-radius: 30px;
 }
 
-#round {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  text-align: center;
-  color: #fff;
-}
-
-#enemy, #me {
+#enemy,#me{
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -172,7 +111,7 @@ h2#title {
   justify-content: center;
 }
 
-.person-wrapper {
+.person-wrapper{
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -180,21 +119,15 @@ h2#title {
   align-items: center;
 }
 
-h2.person {
+
+h2.person{
   display: inline-block;
+  padding: 8px;
   margin: 8px 0;
   color: green;
 }
 
-#enemy.ksn .person {
-  color: blue;
-}
-
-#me.ksn .person {
-  color: red;
-}
-
-h3.sum {
+h3.sum{
   padding-bottom: 10px;
 }
 
@@ -222,22 +155,6 @@ h3.sum {
   animation: fadein 1s;
 }
 
-@media screen and (max-width:500px) {
-  .cards {
-    width: 65%;
-    margin: 10px 0;
-  }
-  #enemy .cards {
-    padding-left: 5%;
-  }
-  #me .cards {
-    padding-right: 5%;
-  }
-  .cards p {
-    font-size: 1.2rem;
-  }
-}
-
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -247,20 +164,16 @@ h3.sum {
   }
 }
 
-.hidden {
+.hidden{  
   height: 0;
   margin: 0;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-  padding: 0 !important;
+  padding: 0;
   transition-duration: opacity 0.3s;
   pointer-events: none;
   opacity: 0 !important;
 }
-
-/*******************
-------ルール
-********************/
 
 #rule {
   position: fixed;
@@ -271,9 +184,8 @@ h3.sum {
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding: 10px 20px 60px;
+  padding: 10px 20px 40px;
   transition: opacity 0.3s;
-  z-index: 4;
 }
 
 @media screen and (max-width:500px) {
@@ -300,6 +212,7 @@ h3.sum {
 #rule .pagenation {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
   color: #fff;
   user-select: none;
 }
@@ -316,28 +229,6 @@ h3.sum {
   color: #888;
   cursor: unset;
   user-select: none;
-}
-
-.ruletab {
-  position: absolute;
-  bottom: 30px;
-  width: 90px;
-  height: 30px;
-  line-height: unset;
-  font-size: 0.7rem;
-  background: #fff;
-  color: #333;
-  border-top: 2px solid #333;
-  border-radius: 0 0 8px 8px;
-  box-sizing: border-box;
-}
-
-.ruletab.selected {
-  border-top: none;
-}
-
-#modeTab {
-  left: 112px;
 }
 
 #rule #rule-close {
@@ -367,189 +258,68 @@ h3.sum {
   transform: translateY(10px)rotate(-45deg);
 }
 
-/*******************
-------決戦モード
-********************/
 
-#kessen {
-  display: none;
-  align-items: center;
-  padding: 20px 0 0;
-}
-
-#kessen h2 {
-  width: 15%;
-  font-size: 1rem;
-  text-align: center;
-}
-
-#powergage {
-  width: 70%;
-  height: 16px;
-  background: blue;
-  position: relative;
-}
-
-#mygage {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  background: red;
-}
-
-#enemy.ksn .param, #me.ksn .param {
-  display: none;
-}
-
-.param {
-  display: flex;
-  flex-wrap: wrap;
-  width: 120px;
-  height: 24px;
-  margin-bottom: 10px;
-}
-
-.fksu .param {
-  padding: 4px 10px;
-  height: 56px;
-  background: steelblue;
-}
-
-img.heart {
-  height: 24px;
-  padding: 4px 2px;
-}
-
-img.damage {
-  height: 24px;
-  padding: 4px;
-}
-
-/*.damage {
-  height: 24px;
-  margin-right: 3px;
-}*/
-
-#mode, #restart {
-  position: absolute;
-  bottom: 14px;
-  color: olivedrab;
-  background: #fff;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  width: 90px;
-  line-height: 32px;
-}
-
-#restart {
-  right: 30px;
-}
-
-.nextmode {
-  width: 160px;
-}
-
-#mode {
-  left: 30px;
-}
-
-#modegroup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: -28px;
-  left: 30px;
-  background: #fff;
-  border-radius: 0 8px 8px 8px;
-  padding: 8px 20px 8px 16px;
-}
-
-#modelist {
-  display: flex;
-  align-items: center;
-  margin-right: 16px;
-}
-
-#modelist input {
-  margin: 8px;
-}
-
-#modeok {
-  font-size: 0.8rem;
-  width: 40px;
-  line-height: 24px;
-  border-radius: 8px;
-  margin: 0;
-  background: #333;
-}
-
-@media screen and (max-width:500px) {
-  #mode, #restart {
-    bottom: 10px;
-    font-size: 0.8rem;
-    width: 80px;
-    line-height: 28px;
-  }
-  #restart {
-    right: 10px;
-  }
-  .nextmode {
-    width: 140px;
-  }
-  #mode {
-    left: 10px;
-  }
-  #modegroup {
-    bottom: -32px;
-    left: 10px;
-    background: #fff;
-    border-radius: 0 8px 8px 8px;
-    padding: 8px 10px;
-  }
-}
-
-footer {
+footer{
   color: #ddd;
   font-size: 0.8rem;
   padding: 16px 0;
   text-align: center;
 }
 
-footer a {
-  display: inline-block;
-  color: #eee;
-  text-decoration: underline;
-  margin-bottom: 10px;
+footer a{
+	display: inline-block;
+	color: #eee;
+	text-decoration: underline;
+	margin-bottom: 10px;
 }
 
-/*@media screen and (max-width:500px) {
-  button, a {
+@media screen and (max-width:500px) {
+  button,a.replay{
     font-size: 0.9rem;
     padding: 6px;
     width: 80px;
   }
-  .container {
-    padding: 50px 0;
+
+  .container{
+    padding: 30px 0;
   }
-  #actions {
+
+  .buttons{
     width: 75%;
   }
-  #master {
+
+  #master{
     margin: 20px auto;
     padding: 30px 10px 50px;
   }
-  #showrule {
+
+  #showrule{
     font-size: 0.6rem;
     padding: 4px 0;
   }
-	
-  .person-wrapper {
+
+  .cards{
+    width: 65%;
+    margin: 10px 0;
+  }
+
+  #enemy .cards{
+    padding-left: 5%;
+  }
+  #me .cards{
+    padding-right: 5%;
+  }
+
+  .cards p{
+    font-size: 1.2rem;
+  }
+
+  .person-wrapper{
     width: 35%;
   }
+
   #rule {
     top: 20px;
   }
-}*/
+
+}
