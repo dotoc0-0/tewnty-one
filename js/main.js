@@ -25,6 +25,7 @@
   let pageNumber = 1;
   let allPages = ruleText.length;
 
+  //ルール
   function hideRule() {
     ruleText.forEach(p => {
       if (p.id === 'rule' + pageNumber) {
@@ -39,6 +40,7 @@
       }
     });
   }
+
 
   next.addEventListener('click', () => {
     if (next.classList.contains('disabled')) {
@@ -73,11 +75,12 @@
     next.classList.remove('disabled');
   });
 
+  //ルール画面開く
   rulebtn.addEventListener('click', () => {
     page.textContent = pageNumber + ' / ' + allPages;
     ruleDiv.classList.remove('hidden');
   });
-
+ //ルール画面閉じる(1ページ目に戻す)
   close.addEventListener('click', () => {
     ruleDiv.classList.add('hidden');
     if (pageNumber !== 1) {
@@ -90,7 +93,7 @@
     }
   });
 
-
+  //ゲーム進行
   function addText(value) { //textの中(主にゲーム進行のための文)
     text.innerHTML = `${value}`;
   }
@@ -276,7 +279,7 @@
       const tie = '<h2>ゲーム終了</h2><p>今回の勝負は引き分け！</p>';
       const blackJack = youWin + '<h5>ブラックジャックで勝利！すごい！</h5>';
       function addReplayBtn() {
-        addValue(master, '<a href="">Replay</a>');
+        addValue(master, '<a href="" class="replay">Replay</a>');
       }
 
 

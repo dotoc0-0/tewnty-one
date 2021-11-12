@@ -31,7 +31,7 @@ ul {
   list-style: none;
 }
 
-button, a{
+button, a.replay{
   display: block;
   background: olivedrab;
   color: #fff;
@@ -180,7 +180,7 @@ h3.sum{
   width: 90%;
   max-width: 560px;
   background: #333;
-  top: 100px;
+  top: 40px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -195,7 +195,7 @@ h3.sum{
 
 #rule .content {
   background: #fff;
-  padding: 20px 10px 40px;
+  padding: 20px 10px;
   text-align: left;
 }
 
@@ -258,6 +258,13 @@ footer{
   font-size: 0.8rem;
   padding: 16px 0;
   text-align: center;
+}
+
+footer a{
+	display: inline-block;
+	color: #eee;
+	text-decoration: underline;
+	margin-bottom: 10px;
 }
 
 @media screen and (max-width:500px) {
